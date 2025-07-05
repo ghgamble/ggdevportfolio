@@ -1,5 +1,5 @@
 <?php
-class AdvancedCare_Walker_Nav_Menu extends Walker_Nav_Menu {
+class GGDevPortfolio_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     // Start Level
     function start_lvl( &$output, $depth = 0, $args = null ) {

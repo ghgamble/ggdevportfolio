@@ -1,28 +1,19 @@
 <?php
-function advancedcare_customize_register($wp_customize) {
+function ggdevportfolio_customize_register($wp_customize) {
 
     // === GENERAL SETTINGS ===
-    $wp_customize->add_section('advancedcare_general_settings', [
-        'title'    => __('General Settings', 'advancedcare'),
+    $wp_customize->add_section('ggdevportfolio_general_settings', [
+        'title'    => __('General Settings', 'ggdevportfolio'),
         'priority' => 30,
     ]);
 
     // Header Logo
-    $wp_customize->add_setting('advancedcare_header_logo', [
+    $wp_customize->add_setting('ggdevportfolio_header_logo', [
         'sanitize_callback' => 'esc_url_raw',
     ]);
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'advancedcare_header_logo', [
-        'label'    => __('Header Logo', 'advancedcare'),
-        'section'  => 'advancedcare_general_settings',
-    ]));
-
-    // Footer Logo
-    $wp_customize->add_setting('advancedcare_footer_logo', [
-        'sanitize_callback' => 'esc_url_raw',
-    ]);
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'advancedcare_footer_logo', [
-        'label'    => __('Footer Logo', 'advancedcare'),
-        'section'  => 'advancedcare_general_settings',
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ggdevportfolio_header_logo', [
+        'label'    => __('Header Logo', 'ggdevportfolio'),
+        'section'  => 'ggdevportfolio_general_settings',
     ]));
 
     // Font choices
@@ -48,84 +39,85 @@ function advancedcare_customize_register($wp_customize) {
         "'Poppins', sans-serif" => 'Poppins',
         "'Great Vibes', cursive" => 'Great Vibes',
         "'Playfair Display', serif" => 'Playfair Display',
-        "'Yeseva One', serif" => 'Yeseva One'
+        "'Yeseva One', serif" => 'Yeseva One',
+        "'Roboto Slab', serif" => 'Roboto Slab'
     ];
 
-    $wp_customize->add_setting('advancedcare_font_family', [
-        'default' => "'Roboto', sans-serif",
+    $wp_customize->add_setting('ggdevportfolio_font_family', [
+        'default' => "'Domine', sans-serif",
         'sanitize_callback' => 'sanitize_text_field',
     ]);
-    $wp_customize->add_control('advancedcare_font_family', [
-        'label'   => __('Body Font Family', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_font_family', [
+        'label'   => __('Body Font Family', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type'    => 'select',
         'choices' => $fonts,
     ]);
 
-    $wp_customize->add_setting('advancedcare_heading_font_family', [
-        'default' => "'Arial', sans-serif",
+    $wp_customize->add_setting('ggdevportfolio_heading_font_family', [
+        'default' => "'Roboto Slab', sans-serif",
         'sanitize_callback' => 'sanitize_text_field',
     ]);
-    $wp_customize->add_control('advancedcare_heading_font_family', [
-        'label'   => __('Heading Font Family', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_heading_font_family', [
+        'label'   => __('Heading Font Family', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type'    => 'select',
         'choices' => $fonts,
     ]);
 
-    $wp_customize->add_setting('advancedcare_font_weight', [
+    $wp_customize->add_setting('ggdevportfolio_font_weight', [
         'default' => '400',
         'sanitize_callback' => 'absint',
     ]);
-    $wp_customize->add_control('advancedcare_font_weight', [
-        'label'   => __('Body Font Weight', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_font_weight', [
+        'label'   => __('Body Font Weight', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type'    => 'number',
     ]);
 
-    $wp_customize->add_setting('advancedcare_heading_font_weight', [
+    $wp_customize->add_setting('ggdevportfolio_heading_font_weight', [
         'default' => '700',
         'sanitize_callback' => 'absint',
     ]);
-    $wp_customize->add_control('advancedcare_heading_font_weight', [
-        'label'   => __('Heading Font Weight', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_heading_font_weight', [
+        'label'   => __('Heading Font Weight', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type'    => 'number',
     ]);
 
-    $wp_customize->add_setting('advancedcare_layout_width', [
+    $wp_customize->add_setting('ggdevportfolio_layout_width', [
         'default' => '1100px',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
-    $wp_customize->add_control('advancedcare_layout_width', [
-        'label' => __('Max Content Width (alignwide)', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_layout_width', [
+        'label' => __('Max Content Width (alignwide)', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type' => 'text',
-        'description' => __('E.g., 960px or 90%', 'advancedcare'),
+        'description' => __('E.g., 960px or 90%', 'ggdevportfolio'),
     ]);
 
-    $wp_customize->add_setting('advancedcare_dark_mode', [
+    $wp_customize->add_setting('ggdevportfolio_dark_mode', [
         'default' => false,
         'sanitize_callback' => 'rest_sanitize_boolean',
     ]);
-    $wp_customize->add_control('advancedcare_dark_mode', [
-        'label' => __('Enable Dark Mode', 'advancedcare'),
-        'section' => 'advancedcare_general_settings',
+    $wp_customize->add_control('ggdevportfolio_dark_mode', [
+        'label' => __('Enable Dark Mode', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_general_settings',
         'type' => 'checkbox',
     ]);
 
     // === COLOR SETTINGS ===
-    $wp_customize->add_section('advancedcare_color_settings', [
-        'title'    => __('Color Settings', 'advancedcare'),
+    $wp_customize->add_section('ggdevportfolio_color_settings', [
+        'title'    => __('Color Settings', 'ggdevportfolio'),
         'priority' => 35,
     ]);
 
     $colors = [
-        'advancedcare_header_bg' => ['#282b35', __('Header Background Color', 'advancedcare')],
-        'advancedcare_header_font_color' => ['#ffffff', __('Header Font Color', 'advancedcare')],
-        'advancedcare_footer_bg' => ['#282b35', __('Footer Background Color', 'advancedcare')],
-        'advancedcare_link_hover_color' => ['#03678e', __('Link Hover Color', 'advancedcare')],
-        'advancedcare_body_bg_color' => ['#ffffff', __('Body Background Color', 'advancedcare')],
+        'ggdevportfolio_header_bg' => ['#222222', __('Header Background Color', 'ggdevportfolio')],
+        'ggdevportfolio_header_font_color' => ['#20ddae', __('Header Font Color', 'ggdevportfolio')],
+        'ggdevportfolio_footer_bg' => ['#222222', __('Footer Background Color', 'ggdevportfolio')],
+        'ggdevportfolio_link_hover_color' => ['#1bbd97', __('Link Hover Color', 'ggdevportfolio')],
+        'ggdevportfolio_body_bg_color' => ['#ffffff', __('Body Background Color', 'ggdevportfolio')],
     ];
 
     foreach ($colors as $id => [$default, $label]) {
@@ -135,80 +127,63 @@ function advancedcare_customize_register($wp_customize) {
         ]);
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $id, [
             'label'   => $label,
-            'section' => 'advancedcare_color_settings',
+            'section' => 'ggdevportfolio_color_settings',
         ]));
     }
 
-    // === CAREER PAGE STYLING ===
-    $wp_customize->add_section('advancedcare_career_page', [
-        'title'    => __('Career Page', 'advancedcare'),
-        'priority' => 36,
-    ]);
-
-    $wp_customize->add_setting('advancedcare_career_accent_color', [
-        'default'           => '#03678e',
-        'sanitize_callback' => 'sanitize_hex_color',
-    ]);
-
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'advancedcare_career_accent_color', [
-        'label'   => __('Career Page Color Pattern', 'advancedcare'),
-        'section' => 'advancedcare_career_page',
-    ]));
-
-
     // Hamburger Icon Color
-    $wp_customize->add_setting('advancedcare_hamburger_icon_color', [
-        'default' => '#ffffff',
+    $wp_customize->add_setting('ggdevportfolio_hamburger_icon_color', [
+        'default' => '#20ddae',
         'sanitize_callback' => 'sanitize_hex_color',
     ]);
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'advancedcare_hamburger_icon_color', [
-        'label' => __('Hamburger Icon Color', 'advancedcare'),
-        'section' => 'advancedcare_color_settings',
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'ggdevportfolio_hamburger_icon_color', [
+        'label' => __('Hamburger Icon Color', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_color_settings',
     ]));
 
     // === ACCESSIBILITY SETTINGS ===
-    $wp_customize->add_section('advancedcare_accessibility', [
-        'title' => __('Accessibility Settings', 'advancedcare'),
+    $wp_customize->add_section('ggdevportfolio_accessibility', [
+        'title' => __('Accessibility Settings', 'ggdevportfolio'),
         'priority' => 40,
     ]);
 
-    $wp_customize->add_setting('advancedcare_font_scale', [
+    $wp_customize->add_setting('ggdevportfolio_font_scale', [
         'default' => '1',
         'sanitize_callback' => 'floatval',
     ]);
-    $wp_customize->add_control('advancedcare_font_scale', [
-        'label' => __('Font Size Scale Multiplier', 'advancedcare'),
-        'section' => 'advancedcare_accessibility',
+    $wp_customize->add_control('ggdevportfolio_font_scale', [
+        'label' => __('Font Size Scale Multiplier', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_accessibility',
         'type' => 'number',
         'input_attrs' => [
             'step' => 0.1,
             'min' => 0.8,
             'max' => 2.0,
         ],
-        'description' => __('1 = default size, 1.2 = 20% larger fonts.', 'advancedcare'),
+        'description' => __('1 = default size, 1.2 = 20% larger fonts.', 'ggdevportfolio'),
     ]);
 
-    $wp_customize->add_setting('advancedcare_reduce_motion', [
+    $wp_customize->add_setting('ggdevportfolio_reduce_motion', [
         'default' => false,
         'sanitize_callback' => 'rest_sanitize_boolean',
     ]);
-    $wp_customize->add_control('advancedcare_reduce_motion', [
-        'label' => __('Reduce Motion / Disable Animations', 'advancedcare'),
-        'section' => 'advancedcare_accessibility',
+    $wp_customize->add_control('ggdevportfolio_reduce_motion', [
+        'label' => __('Reduce Motion / Disable Animations', 'ggdevportfolio'),
+        'section' => 'ggdevportfolio_accessibility',
         'type' => 'checkbox',
     ]);
 }
-add_action('customize_register', 'advancedcare_customize_register');
+add_action('customize_register', 'ggdevportfolio_customize_register');
 
 /**
  * Output the Customizer styles in the <head>
  */
-function advancedcare_customizer_styles() {
-    $body_font = get_theme_mod('advancedcare_font_family', "'Roboto', sans-serif");
-    $heading_font = get_theme_mod('advancedcare_heading_font_family', "'Arial', sans-serif");
-    $body_weight = get_theme_mod('advancedcare_font_weight', 400);
-    $heading_weight = get_theme_mod('advancedcare_heading_font_weight', 700);
-    $font_scale = get_theme_mod('advancedcare_font_scale', 1);
+function ggdevportfolio_customizer_styles() {
+    $body_font = get_theme_mod('ggdevportfolio_font_family', "'Roboto', sans-serif");
+    $heading_font = get_theme_mod('ggdevportfolio_heading_font_family', "'Arial', sans-serif");
+    $body_weight = get_theme_mod('ggdevportfolio_font_weight', 400);
+    $heading_weight = get_theme_mod('ggdevportfolio_heading_font_weight', 700);
+    $font_scale = get_theme_mod('ggdevportfolio_font_scale', 1);
 ?>
 <style type="text/css">
     :root {
@@ -216,7 +191,7 @@ function advancedcare_customizer_styles() {
     }
 
     body {
-        background-color: <?php echo get_theme_mod('advancedcare_body_bg_color', '#ffffff'); ?>;
+        background-color: <?php echo get_theme_mod('ggdevportfolio_body_bg_color', '#ffffff'); ?>;
         font-family: <?php echo $body_font; ?> !important;
         font-weight: <?php echo $body_weight; ?>;
     }
@@ -266,39 +241,39 @@ function advancedcare_customizer_styles() {
     }
 
     header.site-header, div#mobile-primary-menu {
-        background-color: <?php echo get_theme_mod('advancedcare_header_bg', '#282b35'); ?>;
+        background-color: <?php echo get_theme_mod('ggdevportfolio_header_bg', '#282b35'); ?>;
     }
 
     ul#menu-main-menu li a, div#mobile-primary-menu li a {
-        color: <?php echo get_theme_mod('advancedcare_header_font_color', '#ffffff'); ?>;
+        color: <?php echo get_theme_mod('ggdevportfolio_header_font_color', '#ffffff'); ?>;
     }
 
     .site-footer {
-        background-color: <?php echo get_theme_mod('advancedcare_footer_bg', '#282b35'); ?>;
+        background-color: <?php echo get_theme_mod('ggdevportfolio_footer_bg', '#282b35'); ?>;
     }
 
     a:hover {
-        color: <?php echo get_theme_mod('advancedcare_link_hover_color', '#03678e'); ?>;
+        color: <?php echo get_theme_mod('ggdevportfolio_link_hover_color', '#03678e'); ?>;
     }
 
     .o-container {
-        max-width: <?php echo get_theme_mod('advancedcare_layout_width', '1100px'); ?>;
+        max-width: <?php echo get_theme_mod('ggdevportfolio_layout_width', '1100px'); ?>;
     }
 
     .menu-toggle .hamburger-icon rect {
-        fill: <?php echo get_theme_mod('advancedcare_hamburger_icon_color', '#ffffff'); ?>;
+        fill: <?php echo get_theme_mod('ggdevportfolio_hamburger_icon_color', '#ffffff'); ?>;
     }
 
     div#career-block .apploi-drop-down select#job-title-filter {
-        background-color: <?php echo get_theme_mod('advancedcare_career_accent_color', '#03678e'); ?> !important;
-        border: 1px solid <?php echo get_theme_mod('advancedcare_career_accent_color', '#03678e'); ?> !important;
+        background-color: <?php echo get_theme_mod('ggdevportfolio_career_accent_color', '#03678e'); ?> !important;
+        border: 1px solid <?php echo get_theme_mod('ggdevportfolio_career_accent_color', '#03678e'); ?> !important;
     }
 
     a.job-link {
-        color: <?php echo get_theme_mod('advancedcare_career_accent_color', '#03678e'); ?> !important;
+        color: <?php echo get_theme_mod('ggdevportfolio_career_accent_color', '#03678e'); ?> !important;
     }
 
-    <?php if (get_theme_mod('advancedcare_reduce_motion')) : ?>
+    <?php if (get_theme_mod('ggdevportfolio_reduce_motion')) : ?>
     html {
         scroll-behavior: auto !important;
     }
@@ -308,7 +283,7 @@ function advancedcare_customizer_styles() {
     }
     <?php endif; ?>
 
-    <?php if (get_theme_mod('advancedcare_dark_mode')) : ?>
+    <?php if (get_theme_mod('ggdevportfolio_dark_mode')) : ?>
     body { background: #121212; color: #e0e0e0; }
     .site-header, .site-footer { background: #1f1f1f; }
     a { color: #bb86fc; }
@@ -317,4 +292,4 @@ function advancedcare_customizer_styles() {
 </style>
 <?php
 }
-add_action('wp_head', 'advancedcare_customizer_styles');
+add_action('wp_head', 'ggdevportfolio_customizer_styles');

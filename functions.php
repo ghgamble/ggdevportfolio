@@ -18,16 +18,26 @@ function ggdevportfolio_scripts() {
 }
 add_action('wp_enqueue_scripts', 'ggdevportfolio_scripts');
 
+function ggdevportfolio_enqueue_fontawesome() {
+    wp_enqueue_style(
+        'font-awesome',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
+        [],
+        '6.5.0'
+    );
+}
+add_action('wp_enqueue_scripts', 'ggdevportfolio_enqueue_fontawesome');
+
 // Enqueue Google Fonts and apply to frontend
 function ggdevportfolio_enqueue_google_fonts() {
     wp_enqueue_style(
         'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;700&family=Crimson+Pro:wght@400;600;700&family=Domine:wght@400;700&family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=PT+Sans:wght@400;700&family=Quicksand:wght@300;400;600;700&family=Fira+Sans+Condensed:wght@300;400;500;600;700&family=Fraunces:wght@400;500;700&family=Poppins:wght@300;400;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Yeseva+One&display=swap',
+        'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;700&family=Crimson+Pro:wght@400;600;700&family=Domine:wght@400;700&family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=PT+Sans:wght@400;700&family=Quicksand:wght@300;400',
         false
     );
 
-    $body_font = "'Nunito Sans', sans-serif";
-    $heading_font = "'Cormorant Garamond', serif";
+    $body_font = "'Domine', sans-serif";
+    $heading_font = "'Roboto Slab', serif";
     $body_weight = get_theme_mod('ggdevportfolio_font_weight', '400');
     $heading_weight = get_theme_mod('ggdevportfolio_heading_font_weight', '700');
 
@@ -68,12 +78,12 @@ add_action('wp_enqueue_scripts', 'ggdevportfolio_enqueue_google_fonts');
 function ggdevportfolio_editor_fonts() {
     wp_enqueue_style(
         'google-fonts-editor',
-        'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;700&family=Crimson+Pro:wght@400;600;700&family=Domine:wght@400;700&family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=PT+Sans:wght@400;700&family=Quicksand:wght@300;400;600;700&family=Fira+Sans+Condensed:wght@300;400;500;600;700&family=Fraunces:wght@400;500;700&family=Poppins:wght@300;400;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Yeseva+One&display=swap',
+        'https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;700&family=Crimson+Pro:wght@400;600;700&family=Domine:wght@400;700&family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=PT+Sans:wght@400;700&family=Quicksand:wght@300;400',
         false
     );
 
-    $body_font = "'Nunito Sans', sans-serif";
-    $heading_font = "'Cormorant Garamond', serif";
+    $body_font = "'Domine', sans-serif";
+    $heading_font = "'Roboto Slab', serif";
 
     $editor_css = "
         body, .editor-styles-wrapper {
@@ -117,7 +127,7 @@ function ggdevportfolio_register_block_category($categories, $post) {
     $custom_category = array(
         array(
             'slug'  => 'ggdevportfolio-blocks',
-            'title' => __('Advanced Care Blocks', 'ggdevportfolio'),
+            'title' => __('GG Dev Blocks', 'ggdevportfolio'),
             'icon'  => null,
         ),
     );
@@ -132,29 +142,11 @@ require get_template_directory() . '/inc/custom-walker.php';
 // Register Footer Widgets
 function ggdevportfolio_register_footer_widgets() {
     register_sidebar([
-        'name'          => __('Footer Social Links', 'ggdevportfolio'),
-        'id'            => 'footer-social-links',
+        'name'          => __('Footer Social Info', 'ggdevportfolio'),
+        'id'            => 'footer-social-info',
         'before_widget' => '<div class="footer-social-links-widget">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-social-title">',
-        'after_title'   => '</h3>',
-    ]);
-
-    register_sidebar([
-        'name'          => __('Footer Address', 'ggdevportfolio'),
-        'id'            => 'footer-address',
-        'before_widget' => '<div class="footer-address-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-address-title">',
-        'after_title'   => '</h3>',
-    ]);
-
-    register_sidebar([
-        'name'          => __('Footer Menu Links', 'ggdevportfolio'),
-        'id'            => 'footer-menu-links',
-        'before_widget' => '<div class="footer-menu-links-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-menu-title">',
+        'before_title'  => '<h3 class="footer-social-info-title">',
         'after_title'   => '</h3>',
     ]);
 }
