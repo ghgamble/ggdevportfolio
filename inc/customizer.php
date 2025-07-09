@@ -244,6 +244,14 @@ function ggdevportfolio_customizer_styles() {
         background-color: <?php echo get_theme_mod('ggdevportfolio_header_bg', '#282b35'); ?>;
     }
 
+    header.site-header .header-nav .menu li a, header.site-header ul#menu-main-menu li a, header.site-header div#mobile-primary-menu li a {
+        color: <?php echo get_theme_mod('ggdevportfolio_header_font_color', '#20ddae'); ?>;
+    }
+
+    header.site-header .header-nav .menu li a:hover, header.site-header ul#menu-main-menu li a:hover, header.site-header div#mobile-primary-menu li a:hover {
+        color: <?php echo get_theme_mod('ggdevportfolio_header_font_color', '#1bbd97'); ?>;
+    }
+
     ul#menu-main-menu li a, div#mobile-primary-menu li a {
         color: <?php echo get_theme_mod('ggdevportfolio_header_font_color', '#ffffff'); ?>;
     }
@@ -261,7 +269,7 @@ function ggdevportfolio_customizer_styles() {
     }
 
     .menu-toggle .hamburger-icon rect {
-        fill: <?php echo get_theme_mod('ggdevportfolio_hamburger_icon_color', '#ffffff'); ?>;
+        fill: <?php echo get_theme_mod('ggdevportfolio_hamburger_icon_color', '#20ddae'); ?>;
     }
 
     div#career-block .apploi-drop-down select#job-title-filter {
