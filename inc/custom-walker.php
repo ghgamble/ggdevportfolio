@@ -3,7 +3,7 @@ class GGDevPortfolio_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     // Start Level
     function start_lvl( &$output, $depth = 0, $args = null ) {
-        $output .= '<ul class="sub-menu" role="menu">';
+        $output .= '<ul class="sub-menu">';
     }
 
     // Start Element
@@ -13,19 +13,14 @@ class GGDevPortfolio_Walker_Nav_Menu extends Walker_Nav_Menu {
 
         // Begin <li>
         $output .= '<li class="' . esc_attr( $classes ) . '"';
-
-        // ARIA for submenu
         if ( $has_children ) {
             $output .= ' aria-haspopup="true" aria-expanded="false"';
         }
-
         $output .= '>';
 
-        // Build attributes for <a>
+        // Build anchor tag
         $atts = [
-            'href'        => !empty( $item->url ) ? esc_url( $item->url ) : '',
-            'role'        => 'menuitem',
-            'aria-label'  => esc_attr( $item->title ),
+            'href' => !empty( $item->url ) ? esc_url( $item->url ) : '',
         ];
 
         if ( !empty( $item->target ) ) {
@@ -33,14 +28,13 @@ class GGDevPortfolio_Walker_Nav_Menu extends Walker_Nav_Menu {
             $atts['rel'] = 'noopener noreferrer';
         }
 
-        // Begin <a> tag
         $output .= '<a';
         foreach ( $atts as $attr => $value ) {
             $output .= ' ' . $attr . '="' . $value . '"';
         }
         $output .= '>';
 
-        // Dropdown arrow for parent items
+        // Optional: dropdown arrow in link (desktop only)
         if ( $has_children && $depth === 0 ) {
             $output .= '<span class="dropdown-arrow" aria-hidden="true">
                 <svg width="12" height="8" viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg">
@@ -52,9 +46,9 @@ class GGDevPortfolio_Walker_Nav_Menu extends Walker_Nav_Menu {
         $output .= esc_html( $item->title );
         $output .= '</a>';
 
-        // Add toggle button for mobile dropdowns
+        // Mobile submenu toggle button
         if ( $has_children ) {
-            $output .= '<button class="submenu-toggle" aria-expanded="false" aria-label="Toggle Submenu">
+            $output .= '<button class="submenu-toggle" aria-expanded="false" aria-label="Toggle submenu">
                 <svg width="12" height="8" viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
                 </svg>

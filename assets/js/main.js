@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle mobile menu visibility
   if (menuToggle && mobileMenu) {
+    menuToggle.setAttribute('aria-controls', 'main-navigation'); // NEW
     menuToggle.addEventListener('click', () => {
       const isOpen = mobileMenu.classList.contains('open');
       mobileMenu.classList.toggle('open');
@@ -17,9 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile sub-menu toggle ONLY
+  // Mobile sub-menu toggle accessibility
   if (window.innerWidth <= 768) {
     document.querySelectorAll('.dropdown-arrow').forEach((arrow) => {
+      // Ensure focusable and screen reader friendly
+      arrow.setAttribute('role', 'button');
+      arrow.setAttribute('tabindex', '0');
+      arrow.setAttribute('aria-label', 'Toggle submenu');
+
       arrow.addEventListener('click', (e) => {
         e.preventDefault();
         const parentLi = arrow.closest('li');
@@ -31,15 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
           menuItemLink?.setAttribute('aria-expanded', (!isOpen).toString());
         }
       });
+
+      arrow.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          arrow.click();
+        }
+      });
     });
   }
 
   // Skip to content link visibility
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      skipLink.classList.add('visible');
-    } else {
-      skipLink.classList.remove('visible');
-    }
-  });
+  if (skipLink) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        skipLink.classList.add('visible');
+      } else {
+        skipLink.classList.remove('visible');
+      }
+    });
+  }
 });

@@ -23,6 +23,11 @@
         color: #1bbd97;
       }
 
+      &:focus {
+        outline: 2px solid #1bbd97;
+        outline-offset: 3px;
+      }
+
       i {
         display: inline-block;
         vertical-align: middle;
@@ -42,6 +47,11 @@
       &:hover {
         text-decoration: underline;
         color: #1bbd97;
+      }
+
+      &:focus {
+        outline: 2px solid #1bbd97;
+        outline-offset: 3px;
       }
     }
   }
