@@ -118,6 +118,9 @@ function ggdevportfolio_customize_register($wp_customize) {
         'ggdevportfolio_footer_bg' => ['#222222', __('Footer Background Color', 'ggdevportfolio')],
         'ggdevportfolio_link_hover_color' => ['#1bbd97', __('Link Hover Color', 'ggdevportfolio')],
         'ggdevportfolio_body_bg_color' => ['#ffffff', __('Body Background Color', 'ggdevportfolio')],
+        'ggdevportfolio_contact_header_color' => ['#282b35', __('Contact Form Header Color', 'ggdevportfolio')],
+        'ggdevportfolio_contact_button_color' => ['#20ddae', __('Contact Form Button Color', 'ggdevportfolio')],
+        'ggdevportfolio_contact_button_hover_color' => ['#1ab89a', __('Contact Form Button Hover Color', 'ggdevportfolio')]
     ];
 
     foreach ($colors as $id => [$default, $label]) {
@@ -279,6 +282,18 @@ function ggdevportfolio_customizer_styles() {
 
     a.job-link {
         color: <?php echo get_theme_mod('ggdevportfolio_career_accent_color', '#03678e'); ?> !important;
+    }
+
+    .wpcf7 h3 {
+        color: <?php echo get_theme_mod('ggdevportfolio_contact_header_color', '#282b35'); ?>;
+    }
+
+    .wpcf7 input[type=submit] {
+        background: <?php echo get_theme_mod('ggdevportfolio_contact_button_color', '#20ddae'); ?>;
+    }
+
+    .wpcf7 input[type=submit]:hover {
+        background: <?php echo get_theme_mod('ggdevportfolio_contact_button_hover_color', '#1ab89a'); ?>;
     }
 
     <?php if (get_theme_mod('ggdevportfolio_reduce_motion')) : ?>
