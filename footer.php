@@ -23,7 +23,7 @@
 <?php wp_footer(); ?>
 <script>
 document.addEventListener('wpcf7submission', function(event) {
-  if (event.detail.contactFormId == 7f44b1a) {
+  if (event.detail.contactFormId == 46) {
     gtag('event', 'conversion', {
       'send_to': 'AW-17383327544/UxoMCK3Xz_UaELiOguFA'
     });
