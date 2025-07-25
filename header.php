@@ -12,6 +12,26 @@
     gtag('js', new Date());
     gtag('config', 'AW-17383327544');
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "GG Dev",
+      "image": "https://gg-dev.co/wp-content/uploads/2025/07/gg-og-image.jpg",
+      "url": "https://gg-dev.co",
+      "telephone": "+1-704-576-4313",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "329 Sumner St",
+        "addressLocality": "Longmont",
+        "addressRegion": "CO",
+        "postalCode": "80501",
+        "addressCountry": "US"
+      },
+      "description": "Custom WordPress development studio in Colorado specializing in fast, accessible, modern websites for small businesses and nonprofits.",
+      "priceRange": "$$"
+    }
+  </script>
 </head>
 <body <?php body_class(); ?>>
 
