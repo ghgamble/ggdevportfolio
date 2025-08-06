@@ -4,6 +4,7 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php wp_head(); ?>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17383327544"></script>
   <script>
@@ -12,6 +13,7 @@
     gtag('js', new Date());
     gtag('config', 'AW-17383327544');
   </script>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,16 +33,6 @@
       "description": "Custom WordPress development studio in Colorado specializing in fast, accessible, modern websites for small businesses and nonprofits.",
       "priceRange": "$$"
     }
-  </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17383327544">
-  </script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17383327544');
   </script>
 </head>
 <body <?php body_class(); ?>>

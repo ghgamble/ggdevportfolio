@@ -21,14 +21,17 @@
 </footer>
 
 <?php wp_footer(); ?>
+
+<!-- Contact Form 7 Google Ads Conversion Tracking -->
 <script>
-document.addEventListener('wpcf7submission', function(event) {
-  if (event.detail.contactFormId == 46) {
+document.addEventListener('wpcf7mailsent', function(event) {
+  if (event.detail.contactFormId == 46) { // Change 46 if your form ID differs
     gtag('event', 'conversion', {
       'send_to': 'AW-17383327544/UxoMCK3Xz_UaELiOguFA'
     });
   }
 }, false);
 </script>
+
 </body>
 </html>
