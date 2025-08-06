@@ -22,13 +22,26 @@
 
 <?php wp_footer(); ?>
 
-<!-- Contact Form 7 Google Ads Conversion Tracking -->
+<!-- Contact Form 7 Google Ads Conversion Tracking with Debug -->
 <script>
 document.addEventListener('wpcf7mailsent', function(event) {
-  if (event.detail.contactFormId == 46) { // Change 46 if your form ID differs
-    gtag('event', 'conversion', {
-      'send_to': 'AW-17383327544/UxoMCK3Xz_UaELiOguFA'
-    });
+  console.log('✅ CF7 wpcf7mailsent event detected:', event);
+
+  // Check if it's the correct form ID
+  if (event.detail.contactFormId == 46) {
+    console.log('🎯 Correct form ID detected (46). Preparing to send Google Ads conversion...');
+
+    // Check if gtag is loaded
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17383327544/UxoMCK3Xz_UaELiOguFA'
+      });
+      console.log('📤 Google Ads conversion event sent.');
+    } else {
+      console.error('❌ gtag() is not defined. Check if the Google tag is loading in <head>.');
+    }
+  } else {
+    console.warn('⚠️ Not the tracked form. Conversion will not be sent.');
   }
 }, false);
 </script>
