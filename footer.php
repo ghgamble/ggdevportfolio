@@ -46,5 +46,20 @@ document.addEventListener('wpcf7mailsent', function(event) {
 }, false);
 </script>
 
+<!-- Google Ads Conversion Tracking Snippet from Setup -->
+<script>
+window.addEventListener('load', function() {
+  console.log('📌 Google Ads global conversion snippet triggered.');
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17383327544/UxoMCK3Xz_UaELiOguFA'
+    });
+    console.log('📤 Google Ads pageview conversion event sent.');
+  } else {
+    console.error('❌ gtag() is not defined for pageview snippet.');
+  }
+});
+</script>
+
 </body>
 </html>
