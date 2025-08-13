@@ -122,7 +122,11 @@ function ggdevportfolio_customize_register($wp_customize) {
         'ggdevportfolio_contact_button_color' => ['#20ddae', __('Contact Form Button Color', 'ggdevportfolio')],
         'ggdevportfolio_contact_button_hover_color' => ['#1ab89a', __('Contact Form Button Hover Color', 'ggdevportfolio')],
         'ggdevportfolio_body_link_color' => ['#20ddae', __('Body Link Color', 'ggdevportfolio')],
-        'ggdevportfolio_body_link_hover_color' => ['#1bbd97', __('Body Link Hover Color', 'ggdevportfolio')]
+        'ggdevportfolio_body_link_hover_color' => ['#1bbd97', __('Body Link Hover Color', 'ggdevportfolio')],
+        'ggdevportfolio_skip_top_bg_color' => ['#20ddae', __('Skip to Top Background Color', 'ggdevportfolio')],
+        'ggdevportfolio_skip_top_bg_hover_color' => ['#1cc89c', __('Skip to Top Background Hover Color', 'ggdevportfolio')],
+        'ggdevportfolio_skip_top_font_color' => ['#ffffff', __('Skip to Top Font Color', 'ggdevportfolio')],
+        'ggdevportfolio_skip_top_font_hover_color' => ['#282b35', __('Skip to Top Font Hover Color', 'ggdevportfolio')]
     ];
 
     foreach ($colors as $id => [$default, $label]) {
@@ -304,6 +308,16 @@ function ggdevportfolio_customizer_styles() {
 
     .wpcf7 input[type=submit]:hover {
         background: <?php echo get_theme_mod('ggdevportfolio_contact_button_hover_color', '#1ab89a'); ?>;
+    }
+
+    .skip-to-content {
+        background: <?php echo get_theme_mod('ggdevportfolio_skip_top_bg_color', '#20ddae'); ?>;
+        color: <?php echo get_theme_mod('ggdevportfolio_skip_top_font_color', '#ffffff'); ?>;
+    }
+
+    .skip-to-content:hover {
+        background: <?php echo get_theme_mod('ggdevportfolio_skip_top_bg_color', '#1ab89a'); ?>;
+        color: <?php echo get_theme_mod('ggdevportfolio_skip_top_font_hover_color', '#282b35'); ?>;
     }
 
     <?php if (get_theme_mod('ggdevportfolio_reduce_motion')) : ?>

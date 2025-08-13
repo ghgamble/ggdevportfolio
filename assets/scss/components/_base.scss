@@ -7,9 +7,10 @@ $heading-font-family: 'Arial', sans-serif;
 $heading-font-weight: 700;
 
 // === Skip Link Variables ===
-$skip-bg-color: #000;
+$skip-bg-color: #20ddae;
 $skip-text-color: #fff;
-$skip-hover-bg-color: #444;
+$skip-text-hover-color: #282b35;
+$skip-hover-bg-color: #1cc89c;
 
 // === Typography Rules ===
 body {
@@ -79,6 +80,7 @@ h6 { font-size: 1rem; }
 
   &:hover {
     background-color: $skip-hover-bg-color;
+    color: $skip-text-hover-color;
   }
 }
 
